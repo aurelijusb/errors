@@ -6,6 +6,7 @@ go:
   - 1.5
 
 # For forks to work: $HOME/gopath/src/github.com/aurelijusb/errors <-> $HOME/gopath/src/github.com/juju/errors
+# Need gccgo package for Runtime to check compiler
 before_install:
   - export DIR_CURRENT=`pwd`
   - export DIR_PARENT1=`dirname $DIR_CURRENT`
@@ -17,6 +18,7 @@ before_install:
   - ls -al $DIR_PARENT2
   - cd "$DIR_PARENT2/juju/errors"
   - ls -al
+  - sudo apt-get install -y gccgo
 
 install:
   - go get github.com/juju/testing/checkers
