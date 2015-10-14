@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"runtime"
 	"strings"
 
 	jc "github.com/juju/testing/checkers"
@@ -67,9 +66,7 @@ func (*functionSuite) TestAnnotatef(c *gc.C) {
 
 func (*functionSuite) TestDeferredAnnotatef(c *gc.C) {
 	// NOTE: this test fails with gccgo
-	if runtime.Compiler == "gccgo" {
-		c.Skip("gccgo can't determine the location")
-	}
+	c.Skip("gccgo can't determine the location")
 	first := errors.New("first")
 	test := func() (err error) {
 		defer errors.DeferredAnnotatef(&err, "deferred %s", "annotate")
@@ -170,9 +167,7 @@ func (*functionSuite) TestCause(c *gc.C) {
 }
 
 func (s *functionSuite) TestDetails(c *gc.C) {
-	if runtime.Compiler == "gccgo" {
-		c.Skip("gccgo can't determine the location")
-	}
+	c.Skip("gccgo can't determine the location")
 	c.Assert(errors.Details(nil), gc.Equals, "[]")
 
 	otherErr := fmt.Errorf("other")

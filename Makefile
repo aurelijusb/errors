@@ -1,7 +1,7 @@
-default: test_simple
+default: check
 
 test_simple:
-	go test
+	go test && go test -compiler gccgo
 
 check:
 	go test && go test -compiler gccgo

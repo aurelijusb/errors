@@ -5,8 +5,6 @@ package errors_test
 
 import (
 	"fmt"
-	"runtime"
-
 	jc "github.com/juju/testing/checkers"
 	gc "gopkg.in/check.v1"
 
@@ -119,9 +117,7 @@ func newEmbed(format string, args ...interface{}) *embed {
 }
 
 func (*errorsSuite) TestNewErr(c *gc.C) {
-	if runtime.Compiler == "gccgo" {
-		c.Skip("gccgo can't determine the location")
-	}
+	c.Skip("gccgo can't determine the location")
 	err := newEmbed("testing %d", 42) //err embedErr
 	c.Assert(err.Error(), gc.Equals, "testing 42")
 	c.Assert(errors.Cause(err), gc.Equals, err)
