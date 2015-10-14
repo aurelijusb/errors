@@ -13,7 +13,7 @@ before_install:
   - echo $DIR_PARENT1
   - echo $DIR_PARENT2
   - ls $DIR_PARENT2
-  - test -e "$DIR_PARENT2/juju/errors" || ln -s $DIR_PARENT1 "$DIR_PARENT2/naujas"
+  - test -e "$DIR_PARENT2/juju/errors" || ln -s $DIR_PARENT1 "$DIR_PARENT2/juju"
   - ls -al $DIR_PARENT2
 
 install:
